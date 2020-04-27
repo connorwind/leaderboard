@@ -50,7 +50,7 @@ client.connect(err=>{
   const collection = client.db("superhero").collection("leaderboard");
   
     collection.updateOne({name:supename, wins:{$gte:1}}, {$inc : {wins:1}}, {upsert:true})
-    
+    res.send('hopefully it worked?');
     
   });
 });
