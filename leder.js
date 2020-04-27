@@ -21,39 +21,48 @@ app.use(express.static('client'));
           console.log(results);
           //client.close();
       });
+
+
+      app.get('/get', function(req,res){
+ 
+        res.send(results)
+      
+      
+      });
+      
+      app.post('/post', function(req,res){
+        var supename = req.query.name
+       
+      
+       
+        
+          collection.updateOne({"name":supename, "wins":{$gte:1}}, {$inc : {"wins":1}}, {upsert:true},function(err,rest){
+            if (err) throw err;
+            res.send('hopefully it worked?');
+          });
+        });
+
+
+
+
+
+      server.listen(PORT,function() {
+        console.log("server is running");
+        });
+    
     });
 
 
 
 
 
-    server.listen(PORT,function() {
-    console.log("server is running");
-    });
-
+   
 
     
 
 
 
-app.get('/get', function(req,res){
- 
-  res.send(results)
 
-
-});
-
-app.post('/post', function(req,res){
-  var supename = req.query.name
- 
-
- 
-  
-    collection.updateOne({"name":supename, "wins":{$gte:1}}, {$inc : {"wins":1}}, {upsert:true},function(err,rest){
-      if (err) throw err;
-      res.send('hopefully it worked?');
-    });
-  });
 
 
 
