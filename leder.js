@@ -45,7 +45,7 @@ app.get('/get', function(req,res){
 
 app.post('/post', function(req,res){
 var name = req.query.name
-res.send(name);
+res.send("affe");
 });
 
 
