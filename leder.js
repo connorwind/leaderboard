@@ -49,7 +49,7 @@ var cly = new MongoClient(uri, {useUnifiedTopology: true}, {useCreateIndex: true
 cly.connect(err=>{
   const collection = client.db("superhero").collection("leaderboard");
   
-    collection.updateOne({"name":supename, "wins":{$gte:1}}, {$inc : {"wins":1}}, {upsert:true},function(err,rest){
+    collection.updateOne({name:supename, wins:{$gte:1}}, {$inc : {wins:1}}, {upsert:true},function(err,rest){
       if (err) throw err;
       res.send('hopefully it worked?');
 });
