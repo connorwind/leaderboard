@@ -45,11 +45,11 @@ app.get('/get', function(req,res){
 
 app.post('/post', function(req,res){
 var supename = req.query.name
-var cly = new MongoClient(uri, {useUnifiedTopology: true}, {useCreateIndex: true} );
+var cly = new MongoClient(uri);
 cly.connect(err=>{
   const collection = client.db("superhero").collection("leaderboard");
   
-    collection.updateOne({name:supename, wins:{$gte:1}}, {$inc : {wins:1}}, {upsert:true},function(err,rest){
+    collection.updateOne({"name":supename, "wins":{$gte:1}}, {$inc : {"wins":1}}, {upsert:true},function(err,rest){
       if (err) throw err;
       res.send('hopefully it worked?');
 });
