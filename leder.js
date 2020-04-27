@@ -44,8 +44,15 @@ app.get('/get', function(req,res){
 });
 
 app.post('/post', function(req,res){
-var name = req.query.name
-res.send("affe");
+var supename = req.query.name
+var cly = new MongoClient(uri, {useUnifiedTopology: true}, {useCreateIndex: true} );
+client.connect(err=>{
+  const collection = client.db("superhero").collection("leaderboard");
+  
+    collection.updateOne({name:supename, wins:{$gte:1}}, {$inc : {wins:1}}, {upsert:true})
+    
+    
+  });
 });
 
 
