@@ -19,7 +19,7 @@ app.use(express.static('client'));
           if (err) throw err;
           results = result;
           console.log(results);
-          client.close();
+          //client.close();
       });
     });
 
@@ -44,17 +44,17 @@ app.get('/get', function(req,res){
 });
 
 app.post('/post', function(req,res){
-var supename = req.query.name
-var cly = new MongoClient(uri);
-cly.connect(err=>{
-  const collection = client.db("superhero").collection("leaderboard");
+  var supename = req.query.name
+ 
+
+ 
   
     collection.updateOne({"name":supename, "wins":{$gte:1}}, {$inc : {"wins":1}}, {upsert:true},function(err,rest){
       if (err) throw err;
       res.send('hopefully it worked?');
-});
+    });
   });
-});
+
 
 
 
