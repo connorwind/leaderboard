@@ -36,7 +36,7 @@ app.use(express.static('client'));
 
 
 
-app.get('/', function(req,res){
+app.get('/get', function(req,res){
  
   res.send(results)
 
