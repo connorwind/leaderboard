@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://connor:Peppet12@cluster0-lmisd.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {useUnifiedTopology: true} );
 const http = require('http');
-
+var PORT = process.env.PORT || 5000;
 var results;
 
 client.connect(err => {
@@ -29,7 +29,7 @@ const server = http.createServer((request, response) => {
 
 });
 
-server.listen(8081);
+server.listen(PORT);
 
 
 
